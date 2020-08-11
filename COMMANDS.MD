@@ -21,18 +21,18 @@ Get-ADUser -filter * | FT -Property GivenName,Surname,sAMAccountName
 GET-AdUser -Filter * -Properties * | FT -Property GivenName,SurName,sAMAccountName,CN,Description, enabled > c:\adusers.txt
 ```
 
-#Copy users from one security group to another security group
+# Copy users from one security group to another security group
 ```
 Get-ADGroupMember -Identity GROUP-Source | Add-ADPrincipalGroupMembership -MemberOf GROUP-Destiny
 ```
 
-#list members of Security Group 
+# list members of Security Group 
 ```
 Get-ADGroupMember -Identity GROUP-Source 
 ```
 
-#Tmux
-
+# Tmux
+```
 ctrl+b
 
 c	create
@@ -43,4 +43,4 @@ w	list windows
 %	vertical split
 :	split window
 d	detach
-
+```
