@@ -162,6 +162,7 @@ class IntranetUserDesiredState {
     // --------------------------
     def updateFileEntryField(cvFileEntry, index, fieldName, destinyFolder, destinyGroupId) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -283,6 +284,7 @@ class IntranetUserDesiredState {
 
     def updateExternFileEntryField(cvFileEntry, externdata, entry, fieldName, subfieldName, destinyFolder, destinyGroupId, externDS) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -371,6 +373,7 @@ class IntranetUserDesiredState {
 
     def updateExternSimpleArrayFileEntryField(cvFileEntry, externdata, entry, fieldName, subfieldName, destinyFolder, destinyGroupId, externDS) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -460,6 +463,7 @@ class IntranetUserDesiredState {
     def updateFaciliteitenFileEntryField(cvFileEntry, externdata, entry, fieldName, subfieldName,
                                          destinyFolder, destinyGroupId, externDS) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -550,6 +554,7 @@ class IntranetUserDesiredState {
     def updateFaciliteitenArrayFileEntryField(cvFileEntry, externdata, entry, fieldName, subfieldName, subEntry,
                                               destinyFolder, destinyGroupId, externDS) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -643,6 +648,7 @@ class IntranetUserDesiredState {
     def updateExternArrayFileEntryField(cvFileEntry, externdata, entry, fieldName, subfieldName, subEntry,
                                         destinyFolder, destinyGroupId, externDS) {
         def cvNewFileEntry = DLAppServiceUtil.moveFileEntry(cvFileEntry.fileEntryId, destinyFolder.folderId, getServiceContext())
+        log << ">> old entry id: " << cvFileEntry.fileEntryId << " :: new entry id: " << cvNewFileEntry.fileEntryId << "\n"
         setPermissionsFileEntry(cvNewFileEntry, DIRECTEUR, "DIRECTEUR")
         setPermissionsFileEntry(cvNewFileEntry, LEIDINGGEVENDE, "LEIDING GEVENDE")
         setPermissionsFileEntry(cvNewFileEntry, PERSONEELAFDELING, "PERSONEEL AFDELING")
@@ -911,6 +917,7 @@ class IntranetUserDesiredState {
 IntranetUserDesiredState iuds = new IntranetUserDesiredState()
 iuds.log << "Setting permissions:" << iuds.adminUser << "\n"
 
+PrincipalThreadLocal.setName(iuds.adminUserId)
 PermissionChecker permissionChecker = PermissionCheckerFactoryUtil.create(iuds.adminUser)
 PermissionThreadLocal.setPermissionChecker(permissionChecker)
 if ("info" in params) {
